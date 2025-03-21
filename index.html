@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khám Phá Vũ Trụ</title>
+    <style>
+        Reset CSS
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0a0a1a;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(to right, #0b0b2a, #1a1a4a);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 255, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: auto;
+        }
+        .logo-img {
+        height: 100px; /* Điều chỉnh chiều cao phù hợp */
+        width: auto;
+        border-radius: 8px; /* Bo tròn góc nhẹ để logo đẹp hơn */
+        box-shadow: 0 0 10px rgba(0, 200, 255, 0.3); /* Thêm hiệu ứng ánh sáng nhẹ */
+        transition: all 0.3s ease; /* Hiệu ứng khi hover */
+        }
+
+        .logo:hover .logo-img {
+        transform: scale(1.05); /* Hiệu ứng phóng to nhẹ khi hover */
+        box-shadow: 0 0 15px rgba(0, 200, 255, 0.5); /* Tăng hiệu ứng ánh sáng khi hover */
+        }
+        
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 200, 255, 0.3);
+            transition: all 0.3s ease;
+            
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #7a2aff;
+        }
+
+        nav ul li a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #7a2aff;
+        }
+
+        /* Main Content Styles */
+        .page {
+            min-height: 100vh;
+            padding: 8rem 2rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            background-color: rgba(20, 20, 50, 0.5);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .page-title {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            background: linear-gradient(90deg, #00c6ff, #7a2aff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            word-wrap: break-word;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #00c6ff;
+            word-wrap: break-word;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .image-container {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 10px;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .universe-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .fact-box {
+            background-color: rgba(10, 10, 60, 0.6);
+            border-left: 4px solid #00c6ff;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .fact-box h3 {
+            color: #00c6ff;
+            margin-bottom: 0.5rem;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .grid-item {
+            background-color: rgba(30, 30, 80, 0.5);
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .grid-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 255, 0.2);
+        }
+
+        /* Solar System Styles */
+        .solar-system {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .planet {
+            background: rgba(20, 20, 50, 0.5);
+            border-radius: 15px;
+            padding: 2rem;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 255, 0.1);
+        }
+
+        .planet:hover {
+            transform: scale(1.05);
+        }
+
+        .planet h3 {
+            color: #00c6ff;
+            margin-bottom: 0.5rem;
+        }
+
+        .planet-img {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1rem;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .planet-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Galaxy Styles */
+        .galaxy-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .galaxy {
+            background: rgba(20, 20, 50, 0.5);
+            border-radius: 15px;
+            padding: 2rem;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 255, 0.1);
+        }
+
+        .galaxy:hover {
+            transform: scale(1.05);
+        }
+
+        .galaxy-img {
+            width: 240px;
+            height: 160px;
+            margin: 0 auto 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .galaxy-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .galaxy h3 {
+            color: #00c6ff;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: linear-gradient(to right, #0b0b2a, #1a1a4a);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .copyright {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Sử dụng CSS thay vì JavaScript để chuyển đổi tabs */
+        /* Sửa CSS target selector cho hoạt động trên màn hình nhỏ */
+        #overview:target ~ .page #solar-system-content,
+        #overview:target ~ .page #galaxy-content,
+        #solar-system:target ~ .page #overview-content,
+        #solar-system:target ~ .page #galaxy-content,
+        #galaxy:target ~ .page #overview-content,
+        #galaxy:target ~ .page #solar-system-content {
+            display: none;
+        }
+
+        #solar-system:target ~ .page #solar-system-content,
+        #galaxy:target ~ .page #galaxy-content,
+        #overview:target ~ .page #overview-content {
+            display: block;
+        }
+
+        /* Mặc định hiển thị trang overview */
+        #overview-content {
+            display: block;
+        }
+
+        #solar-system-content,
+        #galaxy-content {
+            display: none;
+        }
+
+        /* Active state cho menu dựa vào target */
+        #overview:target ~ header .nav-container nav ul li a[href="#overview"],
+        #solar-system:target ~ header .nav-container nav ul li a[href="#solar-system"],
+        #galaxy:target ~ header .nav-container nav ul li a[href="#galaxy"] {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #7a2aff;
+        }
+
+        /* Responsive Styles - Cải thiện */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+
+            nav ul li {
+                margin: 0.25rem;
+                width: auto;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 0.5rem;
+                text-align: center;
+                font-size: 1rem;
+                white-space: nowrap;
+            }
+
+            .page {
+                padding-top: 10rem; /* Thêm padding-top lớn hơn cho màn hình nhỏ khi header cao hơn */
+            }
+
+            .page-title {
+                font-size: 1.8rem;
+                padding: 0 0.5rem;
+                word-break: break-word;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+                word-break: break-word;
+            }
+
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+
+            .planet, .galaxy {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .galaxy-img {
+                width: 100%;
+                max-width: 240px;
+            }
+        }
+
+        /* Thêm media query cho màn hình cực nhỏ */
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0.5rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            nav ul {
+                padding: 0 0.5rem;
+            }
+
+            nav ul li {
+                margin: 0.1rem;
+            }
+
+            nav ul li a {
+                font-size: 0.9rem;
+                padding: 0.4rem 0.6rem;
+            }
+
+            .page {
+                padding: 9rem 1rem 2rem;
+            }
+
+            .section {
+                padding: 1rem;
+            }
+
+            .page-title {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Anchors cho CSS target selector -->
+    <div id="overview"></div>
+    <div id="solar-system"></div>
+    <div id="galaxy"></div>
+
+    <!-- Header and Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="#overview" class="logo">
+                <img src="https://i.pinimg.com/474x/76/fd/f9/76fdf9d6adb953eb5eb25ac7a6c6622c.jpg" atl = "Vũ Trụ" class="logo-img">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#overview" class="nav-link">Tổng Quan</a></li>
+                    <li><a href="#solar-system" class="nav-link">Hệ Mặt Trời</a></li>
+                    <li><a href="#galaxy" class="nav-link">Thiên Hà</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page">
+        <!-- Trang 1: Tổng Quan Về Vũ Trụ -->
+        <div id="overview-content">
+            <h1 class="page-title">Tổng Quan Về Vũ Trụ</h1>
+            
+            <div class="section">
+                <h2 class="section-title">Vũ Trụ Bao La</h2>
+                <div class="image-container">
+                    <img src="https://fonesmart.com.vn/upload_images/images/2023/03/11/1706_hinh-nen-phi-hanh-gia129.jpg" alt="Hình ảnh toàn cảnh vũ trụ" class="universe-image">
+                </div>
+                <p>Vũ trụ là toàn bộ không-thời gian và mọi thực thể bên trong nó, bao gồm các hành tinh, ngôi sao, thiên hà và tất cả các dạng vật chất và năng lượng khác. Vũ trụ hiện đại được cho là có tuổi đời khoảng 13,8 tỷ năm, kể từ sự kiện Big Bang.</p>
+                <p>Kích thước của vũ trụ quan sát được ước tính khoảng 93 tỷ năm ánh sáng theo đường kính. Tuy nhiên, do sự giãn nở liên tục của vũ trụ, khoảng cách thực tế giữa các thiên thể có thể lớn hơn rất nhiều.</p>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Lịch Sử Khám Phá Vũ Trụ</h2>
+                <p>Con người đã quan sát bầu trời từ thời cổ đại, nhưng cuộc cách mạng khám phá vũ trụ thực sự bắt đầu với phát minh kính thiên văn vào đầu thế kỷ 17. Galileo Galilei là một trong những người đầu tiên sử dụng kính thiên văn để quan sát các thiên thể.</p>
+                
+                <div class="fact-box">
+                    <h3>Thông tin thú vị</h3>
+                    <p>Vào thời điểm Big Bang xảy ra, toàn bộ vũ trụ có kích thước nhỏ hơn một hạt nguyên tử. Trong vòng chưa đầy một giây, vũ trụ đã bắt đầu giãn nở với tốc độ nhanh hơn ánh sáng!</p>
+                </div>
+                
+                <p>Năm 1957, vệ tinh nhân tạo đầu tiên Sputnik 1 được phóng lên quỹ đạo, đánh dấu sự khởi đầu của kỷ nguyên không gian. Năm 1969, Neil Armstrong trở thành người đầu tiên đặt chân lên Mặt Trăng, mở ra một chương mới trong lịch sử khám phá vũ trụ của nhân loại.</p>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Thành Phần Cơ Bản Của Vũ Trụ</h2>
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <h3>Vật Chất Thường</h3>
+                        <p>Chiếm khoảng 5% vũ trụ, bao gồm các ngôi sao, hành tinh, và tất cả những gì chúng ta có thể nhìn thấy.</p>
+                    </div>
+                    <div class="grid-item">
+                        <h3>Vật Chất Tối</h3>
+                        <p>Chiếm khoảng 27% vũ trụ, không phát ra hoặc hấp thụ ánh sáng nhưng có ảnh hưởng trọng lực đáng kể.</p>
+                    </div>
+                    <div class="grid-item">
+                        <h3>Năng Lượng Tối</h3>
+                        <p>Chiếm khoảng 68% vũ trụ, là dạng năng lượng chưa biết làm gia tốc sự giãn nở của vũ trụ.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trang 2: Hệ Mặt Trời -->
+        <div id="solar-system-content">
+            <h1 class="page-title">🪐 Hệ Mặt Trời</h1>
+            <p style="text-align: center; font-size: 1.2rem;">Hệ Mặt Trời của chúng ta gồm Mặt Trời và các hành tinh quay quanh nó. Hãy khám phá từng hành tinh dưới đây!</p>
+
+            <div class="solar-system">
+                <div class="planet">
+                    <div class="planet-img">
+                        <img src="image/SaoThuy.png" alt="Sao Thủy">
+                    </div>
+                    <h3>Sao Thủy</h3>
+                    <p>Hành tinh gần Mặt Trời nhất, có bề mặt cực nóng vào ban ngày và cực lạnh vào ban đêm.</p>
+                </div>
+
+                <div class="planet">
+                    <div class="planet-img">
+                        <img src="image/SaoKim.png" alt="Sao Kim">
+                    </div>
+                    <h3>Sao Kim</h3>
+                    <p>Hành tinh nóng nhất trong hệ Mặt Trời, với bầu khí quyển dày đặc CO₂.</p>
+                </div>
+
+                <div class="planet">
+                    <div class="planet-img">
+                        <img src="image/TraiDat.png" alt="Trái Đất">
+                    </div>
+                    <h3>Trái Đất</h3>
+                    <p>Hành tinh duy nhất có sự sống được biết đến, với nước ở dạng lỏng.</p>
+                </div>
+
+                <div class="planet">
+                    <div class="planet-img">
+                        <img src="image/SaoHoa.png" alt="Sao Hỏa">
+                    </div>
+                    <h3>Sao Hỏa</h3>
+                    <p>Hành tinh đỏ, nơi con người đang nghiên cứu để có thể sinh sống trong tương lai.</p>
+                </div>
+
+                <div class="planet">
+                    <div class="planet-img">
+                        <img src="image/SaoMoc.png" alt="Sao Mộc">
+                    </div>
+                    <h3>Sao Mộc</h3>
+                    <p>Hành tinh lớn nhất trong hệ Mặt Trời, một hành tinh khí khổng lồ với vòng đai và nhiều mặt trăng.</p>
+                </div>
+
+                <div class="planet">
+                    <div class="planet-img">
+                        <img src="image/SaoTho.png" alt="Sao Thổ">
+                    </div>
+                    <h3>Sao Thổ</h3>
+                    <p>Nổi tiếng với hệ thống vành đai đẹp mắt được tạo thành từ băng và đá.</p>
+                </div>
+
+                <div class="planet">
+                    <div class="planet-img">
+                        <img src="image/SaoThienVuong.png" alt="Sao Thiên Vương">
+                    </div>
+                    <h3>Sao Thiên Vương</h3>
+                    <p>Hành tinh có trục quay nghiêng, trông như đang "lăn" khi di chuyển quanh Mặt Trời.</p>
+                </div>
+
+                <div class="planet">
+                    <div class="planet-img">
+                        <img src="image/SaoHaiVuong.png" alt="Sao Hải Vương">
+                    </div>
+                    <h3>Sao Hải Vương</h3>
+                    <p>Hành tinh xa nhất từ Mặt Trời, một hành tinh khí với màu xanh đẹp mắt.</p>
+                </div>
+                <div class="planet">
+                    <div class="planet-img">
+                        <img src="image/SaoDiemVuong.png" alt="Sao Diêm Vương">
+                    </div>
+                    <h3>Sao Diêm Vương</h3>
+                    <p>Hành tinh xa nhất từ Mặt Trời, một hành tinh khí với màu xanh đẹp mắt.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trang 3: Thiên Hà -->
+        <div id="galaxy-content">
+            <h1 class="page-title">🌌 Thiên Hà</h1>
+            <p style="text-align: center; font-size: 1.2rem;">Thiên hà là tập hợp khổng lồ gồm sao, hành tinh, bụi, khí và vật chất tối, liên kết với nhau bởi lực hấp dẫn.</p>
+
+            <div class="galaxy-container">
+                <div class="galaxy">
+                    <div class="galaxy-img">
+                        <img src="image/ThienHaXoanOc.jpg" alt="Dải Ngân Hà">
+                    </div>
+                    <h3>Dải Ngân Hà</h3>
+                    <p>Thiên hà chứa Hệ Mặt Trời của chúng ta, có hàng trăm tỷ ngôi sao.</p>
+                </div>
+
+                <div class="galaxy">
+                    <div class="galaxy-img">
+                        <img src="image/ThienHaXoanOc.jpg" alt="Thiên Hà Xoắn Ốc">
+                    </div>
+                    <h3>Thiên Hà Xoắn Ốc</h3>
+                    <p>Loại thiên hà phổ biến với cấu trúc đĩa và các nhánh xoắn ốc.</p>
+                </div>
+
+                <div class="galaxy">
+                    <div class="galaxy-img">
+                        <img src="image/ThienHaXoanOc.jpg" alt="Thiên Hà Elip">
+                    </div>
+                    <h3>Thiên Hà Elip</h3>
+                    <p>Thiên hà có hình cầu hoặc elip, chủ yếu chứa các ngôi sao già.</p>
+                </div>
+
+                <div class="galaxy">
+                    <div class="galaxy-img">
+                        <img src="image/ThienHaXoanOc.jpg" alt="Thiên Hà Dị Thường">
+                    </div>
+                    <h3>Thiên Hà Dị Thường</h3>
+                    <p>Thiên hà có hình dạng bất thường, bị ảnh hưởng bởi lực hấp dẫn.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>Khám Phá Vũ Trụ - Trang Web Giới Thiệu Vũ Trụ</p>
+            <p class="copyright">&copy; 2025 - Trang web giới thiệu về vũ trụ</p>
+        </div>
+    </footer>
+</body>
+</html>
