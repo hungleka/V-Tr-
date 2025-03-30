@@ -1,0 +1,1403 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Stars Animation */
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Content Container */
+.content-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure all content sections are above the stars */
+.section,
+.page,
+.grid-item,
+.modal {
+  position: relative;
+  z-index: 1;
+}
+
+/* Header Styles */
+header {
+  background: linear-gradient(to right, #0b0b2a, #1a1a4a);
+  padding: 1rem 0;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 255, 0.2);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.logo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+}
+.logo-img {
+  height: 100px; /* Điều chỉnh chiều cao phù hợp */
+  width: auto;
+  border-radius: 8px; /* Bo tròn góc nhẹ để logo đẹp hơn */
+  box-shadow: 0 0 10px rgba(0, 200, 255, 0.3); /* Thêm hiệu ứng ánh sáng nhẹ */
+  transition: all 0.3s ease; /* Hiệu ứng khi hover */
+}
+
+.logo:hover .logo-img {
+  transform: scale(1.05); /* Hiệu ứng phóng to nhẹ khi hover */
+  box-shadow: 0 0 15px rgba(0, 200, 255, 0.5); /* Tăng hiệu ứng ánh sáng khi hover */
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-left: 2rem;
+}
+
+nav ul li a {
+  color: #e680ff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(251, 255, 0, 0.767);
+  transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+  background-color: rgba(155, 133, 158, 0.349);
+  color: #fffb00;
+}
+
+nav ul li a.active {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #7a2aff;
+}
+
+/* Main Content Styles */
+.page {
+  min-height: 100vh;
+  padding: 8rem 2rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Scroll Animation Effects */
+.section {
+  margin: 3rem 0;
+  padding: 2.5rem;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.7),
+    rgba(20, 20, 50, 0.7)
+  );
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 30px rgba(0, 200, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Remove the border effect */
+.section::after {
+  display: none;
+}
+
+/* Enhanced hover effects */
+.section:hover {
+  box-shadow: 0 0 40px rgba(0, 200, 255, 0.2);
+  transform: translateY(-8px);
+}
+
+/* Keep the shimmer effect but make it smoother */
+.section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  z-index: 2;
+  transition: left 0.6s ease-in-out;
+}
+
+.section:hover::before {
+  left: 100%;
+}
+
+/* Parallax background effect */
+.section .shimmer-bg {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 200, 255, 0.1) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  z-index: 0;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Content positioning */
+.section > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Remove transition delays since we don't need them anymore */
+.section:nth-child(1),
+.section:nth-child(2),
+.section:nth-child(3),
+.section:nth-child(4),
+.section:nth-child(5) {
+  transition-delay: 0s;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #00c8ff;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  text-shadow: 0 0 15px rgba(0, 200, 255, 0.5);
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.section-title::after,
+.grid-item::before,
+.planet::before {
+  display: none;
+}
+
+.page-title {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  background: linear-gradient(90deg, #cc00ff, #ffee00, #cc00ff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeIn 0.5s ease-out;
+  text-shadow: 0 0 30px rgba(255, 251, 0, 0.3);
+  letter-spacing: -0.02em;
+  word-wrap: break-word;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.section-title {
+  font-size: 2rem;
+  color: #00c8ff;
+  margin-bottom: 2rem;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(0, 200, 255, 0.5);
+}
+
+p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.image-container {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 10px;
+  margin: 2rem 0;
+  position: relative;
+}
+
+.universe-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+.fact-box {
+  background-color: rgba(10, 10, 60, 0.6);
+  border-left: 4px solid #00c6ff;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border-radius: 0 10px 10px 0;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.fact-box h3 {
+  color: #00c6ff;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.fact-box p {
+  margin: 0;
+  opacity: 1;
+  transform: translateY(0);
+  position: relative;
+  z-index: 2;
+}
+
+/* Additional facts that appear on hover */
+.fact-box .additional-facts {
+  position: relative;
+  background: rgba(10, 10, 60, 0.95);
+  padding: 1.5rem;
+  margin-top: 1rem;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  border-radius: 0 10px 10px 0;
+  border-left: 4px solid #00c6ff;
+  transition: all 0.3s ease;
+}
+
+.fact-box:hover .additional-facts {
+  opacity: 1;
+  max-height: 500px;
+}
+
+.fact-box .additional-facts ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.fact-box .additional-facts li {
+  color: #fff;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  position: relative;
+  line-height: 1.5;
+}
+
+.fact-box .additional-facts li:before {
+  content: "•";
+  color: #00c6ff;
+  position: absolute;
+  left: 0;
+  text-shadow: 0 0 5px rgba(0, 200, 255, 0.5);
+}
+
+.fact-box .additional-facts li:last-child {
+  margin-bottom: 0;
+}
+
+/* Hover indicator */
+.fact-box::after {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 1.5rem;
+  font-size: 0.8rem;
+  color: rgba(0, 200, 255, 0.5);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.fact-box:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Add a subtle glow effect on hover */
+.fact-box:hover {
+  box-shadow: 0 0 20px rgba(0, 200, 255, 0.2);
+  background-color: rgba(10, 10, 60, 0.8);
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.grid-item {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.grid-item h3 {
+  color: #00c8ff;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(0, 200, 255, 0.3);
+}
+
+.grid-item ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.grid-item ul li {
+  color: #fff;
+  margin-bottom: 0.8rem;
+  padding-left: 1.2rem;
+  position: relative;
+  line-height: 1.5;
+}
+
+.grid-item ul li:last-child {
+  margin-bottom: 0;
+}
+
+.grid-item ul li::before {
+  content: "•";
+  color: #00c8ff;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+@media (max-width: 992px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .grid-item {
+    min-height: 220px;
+  }
+}
+
+@media (max-width: 576px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .grid-item {
+    min-height: 200px;
+    padding: 1.2rem;
+  }
+}
+
+/* Solar System Styles */
+.solar-system {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.planet {
+  background: rgba(20, 20, 50, 0.5);
+  border-radius: 15px;
+  padding: 2rem;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 255, 0.1);
+}
+
+.planet:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 200, 255, 0.2);
+}
+
+.planet h3 {
+  color: #00c6ff;
+  margin-bottom: 0.5rem;
+}
+
+.planet-img {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 15px rgba(0, 200, 255, 0.2);
+}
+
+.planet-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.2s ease;
+}
+
+.planet:hover .planet-img img {
+  transform: scale(1.05);
+}
+
+/* Galaxy Styles */
+.galaxy-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.galaxy {
+  background: rgba(20, 20, 50, 0.5);
+  border-radius: 15px;
+  padding: 2rem;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Galaxy glow effect */
+.galaxy::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(204, 0, 255, 0.1) 0%,
+    rgba(0, 200, 255, 0.05) 50%,
+    transparent 100%
+  );
+  opacity: 0;
+  z-index: 0;
+}
+
+/* Galaxy border effect */
+.galaxy::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 15px;
+  padding: 2px;
+  background: linear-gradient(45deg, #cc00ff, #00c8ff, #cc00ff);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+}
+
+.galaxy:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 25px rgba(0, 200, 255, 0.2);
+}
+
+.galaxy:hover::before {
+  opacity: 1;
+}
+
+.galaxy:hover::after {
+  opacity: 1;
+}
+
+.galaxy-img {
+  width: 100%;
+  height: 180px;
+  margin: 0 auto 1rem;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 15px rgba(0, 200, 255, 0.2);
+  position: relative;
+}
+
+/* Galaxy image hover effect */
+.galaxy-img::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  z-index: 2;
+}
+
+.galaxy:hover .galaxy-img::before {
+  left: 100%;
+}
+
+.galaxy-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1);
+}
+
+.galaxy:hover .galaxy-img img {
+  transform: scale(1.05);
+}
+
+.galaxy h3 {
+  color: #00c6ff;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 0 10px rgba(0, 200, 255, 0.5);
+}
+
+/* Galaxy content glow effect */
+.galaxy p {
+  color: #fff;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 0 5px rgba(0, 200, 255, 0.3);
+}
+
+/* Galaxy type indicator */
+.galaxy-type {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(0, 200, 255, 0.2);
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  color: #00c8ff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  z-index: 1;
+}
+
+/* Galaxy stats */
+.galaxy-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 200, 255, 0.1);
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 1.2rem;
+  color: #00c8ff;
+  font-weight: bold;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Footer Styles */
+footer {
+  background: linear-gradient(to right, #0b0b2a, #1a1a4a);
+  padding: 2rem;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.copyright {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* chuyển đổi tabs */
+/* target selector cho hoạt động trên màn hình nhỏ */
+#overview:target ~ .page #solar-system-content,
+#overview:target ~ .page #galaxy-content,
+#solar-system:target ~ .page #overview-content,
+#solar-system:target ~ .page #galaxy-content,
+#galaxy:target ~ .page #overview-content,
+#galaxy:target ~ .page #solar-system-content {
+  display: none;
+}
+
+#solar-system:target ~ .page #solar-system-content,
+#galaxy:target ~ .page #galaxy-content,
+#overview:target ~ .page #overview-content {
+  display: block;
+}
+
+/* Mặc định hiển thị trang overview */
+#overview-content {
+  display: block;
+}
+
+#solar-system-content,
+#galaxy-content {
+  display: none;
+}
+
+/* Active state cho menu dựa vào target */
+#overview:target ~ header .nav-container nav ul li a[href="#overview"],
+#solar-system:target ~ header .nav-container nav ul li a[href="#solar-system"],
+#galaxy:target ~ header .nav-container nav ul li a[href="#galaxy"] {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #eeff00;
+}
+
+/* Responsive Styles - Cải thiện */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  nav ul {
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  nav ul li {
+    margin: 0.25rem;
+    width: auto;
+  }
+
+  nav ul li a {
+    display: block;
+    padding: 0.5rem;
+    text-align: center;
+    font-size: 1rem;
+    white-space: nowrap;
+  }
+
+  .page {
+    padding-top: 10rem; /* Thêm padding-top lớn hơn cho màn hình nhỏ khi header cao hơn */
+  }
+
+  .page-title {
+    font-size: 1.8rem;
+    padding: 0 0.5rem;
+    word-break: break-word;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    word-break: break-word;
+  }
+
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+
+  .planet,
+  .galaxy {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .galaxy-img {
+    width: 100%;
+    max-width: 240px;
+  }
+}
+
+/* Thêm media query cho màn hình cực nhỏ */
+@media (max-width: 480px) {
+  .nav-container {
+    padding: 0.5rem;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  nav ul {
+    padding: 0 0.5rem;
+  }
+
+  nav ul li {
+    margin: 0.1rem;
+  }
+
+  nav ul li a {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .page {
+    padding: 9rem 1rem 2rem;
+  }
+
+  .section {
+    padding: 1rem;
+  }
+
+  .page-title {
+    font-size: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  overflow-y: auto;
+  padding: 2rem 0;
+}
+
+.modal-content {
+  position: relative;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 800px;
+  width: 90%;
+  margin: 20px auto;
+  color: #fff;
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+.modal-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 10px;
+  margin: 15px 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 15px rgba(0, 200, 255, 0.2);
+  display: block;
+}
+
+/* Specific styles for galaxy modal images */
+.galaxy-modal .modal-image {
+  max-height: 500px;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .modal-image {
+    max-height: 300px;
+  }
+
+  .galaxy-modal .modal-image {
+    max-height: 350px;
+  }
+}
+
+.modal-header {
+  position: sticky;
+  top: 0;
+  z-index: 1001;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 20, 40, 0.95)
+  );
+  padding: 1rem;
+  border-radius: 10px 10px 0 0;
+  border-bottom: 1px solid rgba(0, 200, 255, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: -2rem -2rem 1rem -2rem;
+}
+
+.modal-title {
+  color: #00c8ff;
+  font-size: 1.8rem;
+  margin: 0;
+  text-shadow: 0 0 10px rgba(0, 200, 255, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modal-title img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.close {
+  color: #00c8ff;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-shadow: 0 0 10px rgba(0, 200, 255, 0.5);
+  transition: all 0.3s ease;
+  padding: 0.5rem;
+  line-height: 1;
+}
+
+.close:hover {
+  color: #fff;
+  text-shadow: 0 0 15px rgba(0, 200, 255, 0.8);
+  transform: scale(1.1);
+}
+
+.modal-body {
+  margin-top: 1rem;
+}
+
+.modal-text {
+  color: #fff;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.modal-text h3 {
+  color: #00c8ff;
+  margin: 1.5rem 0 1rem;
+  font-size: 1.4rem;
+  text-shadow: 0 0 5px rgba(0, 200, 255, 0.3);
+}
+
+.modal-text ul {
+  list-style-type: none;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.modal-text li {
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.modal-text li:before {
+  content: "•";
+  color: #00c8ff;
+  position: absolute;
+  left: -1rem;
+  text-shadow: 0 0 5px rgba(0, 200, 255, 0.5);
+}
+
+.sun-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.sun-container:hover {
+  background: rgba(0, 0, 0, 0.5);
+  transform: translateY(-5px);
+}
+
+.sun-image {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 1.5rem;
+}
+
+.sun-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 50px rgba(255, 166, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.sun-container:hover .sun-image img {
+  box-shadow: 0 0 70px rgba(255, 166, 0, 0.7);
+}
+
+.sun-info {
+  text-align: center;
+  max-width: 600px;
+}
+
+.sun-info h3 {
+  color: #ffa600;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(255, 166, 0, 0.5);
+}
+
+.sun-info p {
+  color: #fff;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.planet-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.planet {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.planet-img {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.planet-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.planet:hover .planet-img img {
+  transform: scale(1.05);
+}
+
+.planet h3 {
+  color: #fff;
+  font-size: 1.3rem;
+  margin: 1rem 0;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(0, 200, 255, 0.5);
+}
+
+.planet p {
+  color: #ccc;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+  flex-grow: 1;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 992px) {
+  .planet-container,
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .planet-img {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+@media (max-width: 768px) {
+  .planet-container,
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 0.8rem;
+  }
+
+  .planet,
+  .grid-item {
+    padding: 1.2rem;
+  }
+
+  .planet-img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .planet h3 {
+    font-size: 1.1rem;
+  }
+
+  .planet p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .planet-container,
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+
+  .planet-img {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+/* Universe Components Styles */
+.universe-components {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.component-card {
+  background: rgba(10, 10, 40, 0.4);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  height: auto;
+  min-height: 400px;
+}
+
+.component-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 200, 255, 0.15);
+  background: rgba(10, 10, 40, 0.5);
+}
+
+.component-image {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  position: relative;
+}
+
+.component-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.component-card:hover .component-image img {
+  transform: scale(1.05);
+}
+
+.component-content {
+  padding: 1.5rem;
+  position: relative;
+}
+
+.component-title {
+  font-size: 1.5rem;
+  color: #00c8ff;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(0, 200, 255, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.component-title .percentage {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  color: #00c8ff;
+  border: 1px solid rgba(0, 200, 255, 0.3);
+  text-shadow: none;
+  font-weight: 600;
+  min-width: 60px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 200, 255, 0.2);
+}
+
+.component-card:hover .component-title .percentage {
+  background: #ffffff;
+  border-color: rgba(0, 200, 255, 0.5);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 200, 255, 0.3);
+}
+
+/* Custom colors for each component's percentage */
+.component-card:nth-child(1) .component-title .percentage {
+  color: #4caf50;
+  border-color: rgba(76, 175, 80, 0.3);
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
+}
+
+.component-card:nth-child(2) .component-title .percentage {
+  color: #2196f3;
+  border-color: rgba(33, 150, 243, 0.3);
+  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.2);
+}
+
+.component-card:nth-child(3) .component-title .percentage {
+  color: #9c27b0;
+  border-color: rgba(156, 39, 176, 0.3);
+  box-shadow: 0 2px 8px rgba(156, 39, 176, 0.2);
+}
+
+.component-card:hover .component-title .percentage {
+  transform: scale(1.05);
+}
+
+.component-card:nth-child(1):hover .component-title .percentage {
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.component-card:nth-child(2):hover .component-title .percentage {
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+}
+
+.component-card:nth-child(3):hover .component-title .percentage {
+  box-shadow: 0 4px 12px rgba(156, 39, 176, 0.3);
+}
+
+.component-description {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  max-height: 80px;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.component-card.expanded .component-description {
+  max-height: 1000px;
+}
+
+.view-more-btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 200, 255, 0.1);
+  color: #00c8ff;
+  border: 1px solid rgba(0, 200, 255, 0.3);
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.view-more-btn:hover {
+  background: rgba(0, 200, 255, 0.2);
+  border-color: rgba(0, 200, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.component-details {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.component-card.expanded .component-details {
+  opacity: 1;
+  max-height: 500px;
+  margin-top: 1rem;
+}
+
+.component-details li {
+  color: rgba(255, 255, 255, 0.8);
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.component-details li::before {
+  content: "•";
+  color: #00c8ff;
+  position: absolute;
+  left: 0.5rem;
+  top: 0.5rem;
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+  .universe-components {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .universe-components {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+
+  .component-card {
+    max-width: 500px;
+    margin: 0 auto;
+    min-height: 350px;
+  }
+
+  .component-image {
+    height: 160px;
+  }
+
+  .component-title {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .component-image {
+    height: 140px;
+  }
+
+  .component-content {
+    padding: 1.2rem;
+  }
+
+  .component-title {
+    font-size: 1.3rem;
+  }
+
+  .component-description {
+    font-size: 0.95rem;
+  }
+}
