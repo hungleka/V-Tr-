@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vũ Trụ</title>
+    <title>GalaxiX - Khám Phá Vũ Trụ</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -11,6 +11,11 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   </head>
   <body>
     <!-- Anchors cho CSS target selector -->
@@ -19,17 +24,25 @@
     <div id="galaxy"></div>
 
     <!-- Header and Navigation -->
-    <header>
-      <div class="nav-container">
-        <a href="#overview" class="logo">
-          <img
-            src="https://i.pinimg.com/474x/76/fd/f9/76fdf9d6adb953eb5eb25ac7a6c6622c.jpg"
-            atl="Vũ Trụ"
-            class="logo-img"
-          />
-        </a>
-        <nav>
-          <ul>
+    <header class="main-header">
+      <div class="header-container">
+        <div class="header-left">
+          <a href="#overview" class="logo">
+            <img
+              src="https://i.pinimg.com/474x/76/fd/f9/76fdf9d6adb953eb5eb25ac7a6c6622c.jpg"
+              alt="GalaxiX"
+              class="logo-img"
+            />
+          </a>
+          <h1 class="site-title">GalaxiX</h1>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="main-nav">
+          <ul class="nav-list">
             <li><a href="#overview" class="nav-link">Tổng Quan</a></li>
             <li><a href="#solar-system" class="nav-link">Hệ Mặt Trời</a></li>
             <li><a href="#galaxy" class="nav-link">Thiên Hà</a></li>
@@ -452,80 +465,113 @@
 
         <div class="section">
           <h2 class="section-title">Các Thành Phần Khác Trong Hệ Mặt Trời</h2>
+          <div class="swiper solar-system-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="component-card">
+                  <div class="component-image">
+                    <img src="image/Ceres.png" alt="Ceres" />
+                  </div>
+                  <div class="component-content">
+                    <h3>Ceres</h3>
+                    <p>Hành tinh lùn lớn nhất trong Vành đai Tiểu hành tinh</p>
+                    <ul>
+                      <li>Đường kính: ~940 km</li>
+                      <li>Khối lượng: 9,39 × 10²⁰ kg</li>
+                      <li>Quỹ đạo: 2,77 AU từ Mặt Trời</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
 
-          <div class="grid-container">
-            <div class="grid-item">
-              <h3>A. Hành Tinh Lùn</h3>
-              <ul>
-                <li>
-                  Sao Diêm Vương (Pluto): Từng là hành tinh thứ 9 nhưng bị xếp
-                  vào nhóm hành tinh lùn năm 2006
-                </li>
-                <li>Eris: Hành tinh lùn lớn nhất trong Hệ Mặt Trời</li>
-                <li>Haumea: Có hình dạng kéo dài do quay nhanh</li>
-                <li>Makemake: Hành tinh lùn lớn thứ ba</li>
-                <li>
-                  Ceres: Hành tinh lùn duy nhất trong Vành đai Tiểu hành tinh
-                </li>
-              </ul>
-            </div>
+              <div class="swiper-slide">
+                <div class="component-card">
+                  <div class="component-image">
+                    <img src="image/Eris.png" alt="Eris" />
+                  </div>
+                  <div class="component-content">
+                    <h3>Eris</h3>
+                    <p>Hành tinh lùn lớn nhất trong Hệ Mặt Trời</p>
+                    <ul>
+                      <li>Đường kính: ~2.326 km</li>
+                      <li>Khối lượng: 1,66 × 10²² kg</li>
+                      <li>Quỹ đạo: 67,7 AU từ Mặt Trời</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
 
-            <div class="grid-item">
-              <h3>B. Vành Đai Tiểu Hành Tinh</h3>
-              <ul>
-                <li>Nằm giữa Sao Hỏa và Sao Mộc</li>
-                <li>Chứa hàng triệu thiên thể nhỏ</li>
-                <li>Ceres là thiên thể lớn nhất trong vành đai</li>
-                <li>Nhiều tiểu hành tinh có quỹ đạo bất thường</li>
-                <li>Là nguồn cung cấp thiên thạch cho Trái Đất</li>
-              </ul>
-            </div>
+              <div class="swiper-slide">
+                <div class="component-card">
+                  <div class="component-image">
+                    <img src="image/Haumea.png" alt="Haumea" />
+                  </div>
+                  <div class="component-content">
+                    <h3>Haumea</h3>
+                    <p>Hành tinh lùn có hình dạng kéo dài do quay nhanh</p>
+                    <ul>
+                      <li>Đường kính: ~1.632 km</li>
+                      <li>Khối lượng: 4,01 × 10²¹ kg</li>
+                      <li>Quỹ đạo: 43,1 AU từ Mặt Trời</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
 
-            <div class="grid-item">
-              <h3>C. Vành Đai Kuiper và Đám Mây Oort</h3>
-              <ul>
-                <li>
-                  Vành đai Kuiper:
-                  <ul>
-                    <li>Nằm ngoài Sao Hải Vương</li>
-                    <li>Chứa nhiều thiên thể băng giá</li>
-                    <li>Là nơi có nhiều hành tinh lùn</li>
-                  </ul>
-                </li>
-                <li>
-                  Đám mây Oort:
-                  <ul>
-                    <li>Vùng xa nhất của Hệ Mặt Trời</li>
-                    <li>Là nguồn gốc của sao chổi dài hạn</li>
-                    <li>Chứa hàng nghìn tỷ thiên thể băng</li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
+              <div class="swiper-slide">
+                <div class="component-card">
+                  <div class="component-image">
+                    <img src="image/Makemake.png" alt="Makemake" />
+                  </div>
+                  <div class="component-content">
+                    <h3>Makemake</h3>
+                    <p>Hành tinh lùn lớn thứ ba trong Hệ Mặt Trời</p>
+                    <ul>
+                      <li>Đường kính: ~1.430 km</li>
+                      <li>Khối lượng: 3,1 × 10²¹ kg</li>
+                      <li>Quỹ đạo: 45,8 AU từ Mặt Trời</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
 
-            <div class="grid-item">
-              <h3>D. Sao Chổi và Thiên Thạch</h3>
-              <ul>
-                <li>
-                  Sao chổi:
-                  <ul>
-                    <li>Quỹ đạo dài và lệch tâm</li>
-                    <li>Phát triển đuôi băng khi đến gần Mặt Trời</li>
-                    <li>
-                      Được cho là mang nước và vật chất hữu cơ đến Trái Đất
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  Thiên thạch:
-                  <ul>
-                    <li>Các mảnh đá nhỏ di chuyển trong không gian</li>
-                    <li>Khi rơi xuống Trái Đất gọi là thiên thạch rơi</li>
-                    <li>Để lại các hố va chạm trên bề mặt hành tinh</li>
-                  </ul>
-                </li>
-              </ul>
+              <div class="swiper-slide">
+                <div class="component-card">
+                  <div class="component-image">
+                    <img src="image/SaoChoi.png" alt="Sao Chổi" />
+                  </div>
+                  <div class="component-content">
+                    <h3>Sao Chổi</h3>
+                    <p>Thiên thể băng giá với quỹ đạo elip dài</p>
+                    <ul>
+                      <li>Nguồn gốc: Đám mây Oort</li>
+                      <li>Thành phần: Băng, bụi, đá</li>
+                      <li>Đuôi sáng khi gần Mặt Trời</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="component-card">
+                  <div class="component-image">
+                    <img src="image/TieuHanhTinh.png" alt="Tiểu Hành Tinh" />
+                  </div>
+                  <div class="component-content">
+                    <h3>Tiểu Hành Tinh</h3>
+                    <p>Thiên thể đá nhỏ quay quanh Mặt Trời</p>
+                    <ul>
+                      <li>Vành đai chính: Giữa Sao Hỏa và Sao Mộc</li>
+                      <li>Kích thước: Từ vài mét đến hàng trăm km</li>
+                      <li>Số lượng: Hàng triệu thiên thể</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
           </div>
         </div>
       </div>
@@ -595,456 +641,74 @@
     <!-- Footer -->
     <footer>
       <div class="footer-content">
-        <p>Khám Phá Vũ Trụ - Trang Web Giới Thiệu Vũ Trụ</p>
-        <p class="copyright">&copy; 2025 - Trang web giới thiệu về vũ trụ</p>
+        <p>GalaxiX - Trang Web Giới Thiệu Vũ Trụ</p>
+        <p class="copyright">&copy; 2025 - GalaxiX</p>
+      </div>
+    </footer>
+
+    <footer class="main-footer">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>Về Chúng Tôi</h3>
+          <p>
+            GalaxiX mở ra cánh cửa đến vũ trụ bao la, nơi bạn có thể khám phá
+            những bí ẩn của hệ Mặt Trời, các thiên hà xa xôi và những kỳ quan
+            ngoài không gian.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Liên Kết Nhanh</h3>
+          <ul class="footer-links">
+            <li><a href="#overview">Tổng Quan</a></li>
+            <li><a href="#solar-system">Hệ Mặt Trời</a></li>
+            <li><a href="#galaxy">Thiên Hà</a></li>
+            <li><a href="#universe-components">Thành Phần Vũ Trụ</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Liên Hệ</h3>
+          <ul class="contact-info">
+            <li><i class="fas fa-envelope"></i> info@galaxix.com</li>
+            <li><i class="fas fa-phone"></i> +84 123 456 789</li>
+            <li><i class="fas fa-map-marker-alt"></i> Hà Nội, Việt Nam</li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Bản Tin</h3>
+          <p>Đăng ký để nhận những cập nhật mới nhất về vũ trụ.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Email của bạn" required />
+            <button type="submit">Đăng Ký</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p>&copy; 2024 GalaxiX. Tất cả quyền được bảo lưu.</p>
+          <div class="footer-bottom-links">
+            <a href="#">Chính Sách Bảo Mật</a>
+            <a href="#">Điều Khoản Sử Dụng</a>
+          </div>
+        </div>
       </div>
     </footer>
 
     <!-- Modal Structure -->
     <div class="modal" id="mercury-modal">
       <div class="modal-content">
-        <h2 class="modal-title">Sao Thủy</h2>
-        <img src="image/SaoThuy.png" alt="Sao Thủy" class="modal-image" />
-        <div class="modal-body">
-          <p>
-            Sao Thủy là hành tinh nhỏ nhất và gần Mặt Trời nhất trong Hệ Mặt
-            Trời. Đây là một số thông tin thú vị về Sao Thủy:
-          </p>
-          <h3>Đặc điểm chung:</h3>
-          <ul>
-            <li>Khoảng cách đến Mặt Trời: ~57,9 triệu km</li>
-            <li>Đường kính: ~4.880 km</li>
-            <li>Khối lượng: ~3,3 × 10²³ kg</li>
-            <li>Thời gian quay quanh Mặt Trời: 88 ngày</li>
-          </ul>
-          <h3>Bề mặt và khí hậu:</h3>
-          <ul>
-            <li>Nhiệt độ: -180°C (ban đêm) đến 430°C (ban ngày)</li>
-            <li>Bề mặt: Nhiều miệng núi lửa giống Mặt Trăng</li>
-            <li>Khí quyển: Rất mỏng, chủ yếu là oxy, natri, hydro</li>
-          </ul>
-          <h3>Cấu trúc:</h3>
-          <ul>
-            <li>Nhân: Lớn, chiếm 85% bán kính, chủ yếu là sắt</li>
-            <li>Lớp phủ: Mỏng</li>
-            <li>Vỏ ngoài: Rắn, mỏng và có nhiều vết nứt</li>
-          </ul>
-          <h3>Điểm đặc biệt:</h3>
-          <ul>
-            <li>Quỹ đạo lệch tâm lớn nhất</li>
-            <li>Không có vệ tinh</li>
-            <li>Hiệu ứng cộng hưởng quỹ đạo 3:2</li>
-          </ul>
-          <h3>Thám hiểm:</h3>
-          <ul>
-            <li>Mariner 10 (1974-1975): Chụp ảnh bề mặt</li>
-            <li>MESSENGER (2011-2015): Phát hiện nước đá</li>
-            <li>BepiColombo (2018): Nghiên cứu chi tiết</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal" id="venus-modal">
-      <div class="modal-content">
-        <h2 class="modal-title">Sao Kim</h2>
-        <img src="image/SaoKim.png" alt="Sao Kim" class="modal-image" />
-        <div class="modal-body">
-          <p>
-            Sao Kim (Venus) là hành tinh thứ hai tính từ Mặt Trời và là hành
-            tinh nóng nhất trong Hệ Mặt Trời. Nó được đặt theo tên nữ thần tình
-            yêu và sắc đẹp của La Mã – Venus, vì vẻ ngoài sáng rực khi quan sát
-            từ Trái Đất
-          </p>
-          <h3>Đặc điểm chung:</h3>
-          <ul>
-            <li>Khoảng cách đến Mặt Trời: ~108 triệu km (0,72 AU)</li>
-            <li>Đường kính: ~12.104 km (gần bằng Trái Đất)</li>
-            <li>
-              Khối lượng: ~4,87 × 10²⁴ kg (khoảng 81,5% khối lượng Trái Đất)
-            </li>
-            <li>Mật độ: 5,24 g/cm³</li>
-            <li>Thời gian quay quanh Mặt Trời: 225 ngày Trái Đất</li>
-            <li>
-              Thời gian tự quay quanh trục: 243 ngày Trái Đất (dài hơn cả một
-              năm trên Sao Kim)
-            </li>
-            <li>
-              Hướng quay: Ngược so với hầu hết các hành tinh (từ Đông sang Tây)
-            </li>
-          </ul>
-          <h3>Bề mặt và khí hậu:</h3>
-          <ul>
-            <li>
-              Nhiệt độ trung bình: ~467°C (cao nhất trong Hệ Mặt Trời, đủ để làm
-              tan chảy chì)
-            </li>
-            <li>
-              Áp suất khí quyển: Gấp 92 lần Trái Đất (tương đương với áp suất
-              dưới đáy đại dương sâu 900 m)
-            </li>
-            <li>
-              Bề mặt: Đầy núi lửa, đồng bằng rộng lớn và có nhiều dấu hiệu hoạt
-              động địa chất mạnh mẽ
-            </li>
-            <li>
-              Khí quyển: Dày đặc với thành phần chính là CO₂ (~96,5%), kèm theo
-              mây axit sulfuric dày đặc
-            </li>
-          </ul>
-          <h3>Cấu trúc:</h3>
-          <ul>
-            <li>Nhân: Giàu sắt, có bán kính khoảng 3.000 km</li>
-            <li>Lớp phủ: Chủ yếu là silicat, giống Trái Đất</li>
-            <li>
-              Vỏ ngoài: Dày hơn Trái Đất và không có dấu hiệu của các mảng kiến
-              tạo rõ ràng
-            </li>
-          </ul>
-          <h3>Điểm đặc biệt:</h3>
-          <ul>
-            <li>
-              Hiệu ứng nhà kính cực mạnh: Do CO₂ và mây axit sulfuric giữ nhiệt,
-              khiến nhiệt độ không giảm dù ban ngày hay ban đêm
-            </li>
-            <li>
-              Không có từ trường mạnh: Dù có nhân sắt nhưng Sao Kim không tạo ra
-              từ trường toàn cầu đáng kể như Trái Đất
-            </li>
-            <li>
-              Quay chậm và ngược: Một ngày trên Sao Kim dài hơn một năm của nó
-              và mặt trời mọc ở phía Tây, lặn ở phía Đông
-            </li>
-            <li>
-              Áp suất cực cao: Nếu con người đứng trên bề mặt Sao Kim, họ sẽ bị
-              nghiền nát ngay lập tức
-            </li>
-          </ul>
-          <h3>Thám hiểm:</h3>
-          <ul>
-            <li>
-              Tàu Venera (Liên Xô, 1960-1980): Một số tàu đã hạ cánh thành công
-              và gửi ảnh từ bề mặt trước khi bị phá hủy do nhiệt độ và áp suất
-            </li>
-            <li>
-              Tàu Magellan (NASA, 1990): Chụp bản đồ radar bề mặt Sao Kim chi
-              tiết
-            </li>
-            <li>
-              Tàu Akatsuki (Nhật Bản, 2015 - nay): Nghiên cứu khí quyển Sao Kim
-            </li>
-            <li>
-              Các nhiệm vụ tương lai: NASA và ESA có kế hoạch gửi tàu DAVINCI+
-              và VERITAS vào những năm 2030 để khám phá thêm
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal" id="earth-modal">
-      <div class="modal-content">
-        <h2 class="modal-title">Trái Đất</h2>
-        <img src="image/TraiDat.png" alt="Trái Đất" class="modal-image" />
-        <div class="modal-body">
-          <p>
-            Trái Đất là hành tinh duy nhất có sự sống được biết đến trong Hệ Mặt
-            Trời. Đây là một số thông tin thú vị về Trái Đất:
-          </p>
-          <h3>Đặc điểm chung:</h3>
-          <ul>
-            <li>Khoảng cách đến Mặt Trời: ~149,6 triệu km (1 AU)</li>
-            <li>Đường kính: ~12.742 km</li>
-            <li>Khối lượng: ~5,97 × 10²⁴ kg</li>
-            <li>Mật độ: 5,51 g/cm³ (cao nhất trong Hệ Mặt Trời)</li>
-            <li>Thời gian quay quanh Mặt Trời: 365,25 ngày</li>
-            <li>Thời gian tự quay quanh trục: 23 giờ 56 phút (~1 ngày)</li>
-            <li>Độ nghiêng trục: 23,5° (gây ra các mùa trong năm)</li>
-            <li>
-              Từ trường: Mạnh, bảo vệ Trái Đất khỏi bức xạ Mặt Trời và gió Mặt
-              Trời
-            </li>
-          </ul>
-          <h3>Bề mặt và khí hậu:</h3>
-          <ul>
-            <li>Diện tích: ~510 triệu km² (71% là nước, 29% là đất liền)</li>
-            <li>
-              Khí hậu: Đa dạng, từ vùng băng giá ở cực đến vùng nhiệt đới nóng
-              ẩm
-            </li>
-            <li>
-              Nhiệt độ trung bình: ~15°C (có thể dao động từ -89°C đến 58°C)
-            </li>
-            <li>
-              Bầu khí quyển: Chủ yếu gồm nitơ (78%) và oxy (21%), cung cấp điều
-              kiện sống cho con người và động vật
-            </li>
-          </ul>
-          <h3>Cấu trúc bên trong:</h3>
-          <ul>
-            <li>
-              Nhân trong: Rắn, chủ yếu là sắt và niken, nhiệt độ khoảng 5.400°C
-            </li>
-            <li>Nhân ngoài: Lỏng, tạo ra từ trường bảo vệ Trái Đất</li>
-            <li>
-              Lớp phủ: Dày ~2.900 km, chủ yếu là đá nóng chảy và tạo ra hiện
-              tượng kiến tạo mảng
-            </li>
-            <li>Vỏ Trái Đất: Mỏng (~5-70 km), là nơi con người sinh sống</li>
-          </ul>
-          <h3>Các đặc điểm nổi bật:</h3>
-          <ul>
-            <li>
-              Sự sống: Hành tinh duy nhất được biết có sự sống nhờ nước ở thể
-              lỏng, khí quyển giàu oxy và nhiệt độ ổn định
-            </li>
-            <li>
-              Nước: Bao phủ 71% bề mặt, đóng vai trò quan trọng trong điều hòa
-              khí hậu và duy trì sự sống
-            </li>
-            <li>
-              Kiến tạo mảng: Góp phần hình thành núi, động đất, núi lửa và chu
-              trình carbon
-            </li>
-            <li>
-              Mặt Trăng: Vệ tinh duy nhất của Trái Đất, ảnh hưởng đến thủy triều
-              và sự ổn định của trục quay
-            </li>
-          </ul>
-          <h3>Thám hiểm:</h3>
-          <ul>
-            <li>
-              Quan sát từ vũ trụ: Hình ảnh đầu tiên về Trái Đất từ không gian
-              được chụp bởi tàu Apollo 8 (1968)
-            </li>
-            <li>
-              Trạm vũ trụ quốc tế (ISS): Hoạt động từ năm 2000, giúp nghiên cứu
-              khí hậu và quan sát Trái Đất từ quỹ đạo
-            </li>
-            <li>
-              Các vệ tinh: Hàng nghìn vệ tinh theo dõi khí hậu, địa lý và thiên
-              văn
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal" id="mars-modal">
-      <div class="modal-content">
-        <h2 class="modal-title">Sao Hỏa</h2>
-        <img src="image/SaoHoa.png" alt="Sao Hỏa" class="modal-image" />
-        <div class="modal-body">
-          <p>
-            Sao Hỏa (Mars) là hành tinh thứ tư tính từ Mặt Trời và được mệnh
-            danh là "Hành tinh Đỏ" do bề mặt chứa nhiều oxit sắt (gỉ sét), tạo
-            ra màu đỏ đặc trưng. Đây là một trong những hành tinh được con người
-            quan tâm và nghiên cứu nhiều nhất vì có nhiều đặc điểm tương đồng
-            với Trái Đất và tiềm năng tồn tại sự sống.
-          </p>
-          <h3>Đặc điểm chung:</h3>
-          <ul>
-            <li>Khoảng cách đến Mặt Trời: ~227,9 triệu km (1,52 AU)</li>
-            <li>Đường kính: ~6.779 km (bằng khoảng 53% Trái Đất)</li>
-            <li>Khối lượng: ~6,42 × 10²³ kg (bằng khoảng 11% Trái Đất)</li>
-            <li>Mật độ: 3,93 g/cm³</li>
-            <li>
-              Thời gian quay quanh Mặt Trời: 687 ngày Trái Đất (~1,88 năm Trái
-              Đất)
-            </li>
-            <li>
-              Thời gian tự quay quanh trục: 24 giờ 37 phút (gần bằng một ngày
-              Trái Đất)
-            </li>
-            <li>Độ nghiêng trục: 25,2° (tương tự Trái Đất, tạo ra các mùa)</li>
-            <li>
-              Từ trường: Rất yếu, không đủ để bảo vệ khí quyển khỏi gió Mặt Trời
-            </li>
-          </ul>
-          <h3>Bề mặt và khí hậu:</h3>
-          <ul>
-            <li>Nhiệt độ trung bình: ~ -63°C (dao động từ -140°C đến 30°C)</li>
-            <li>
-              Bề mặt: Chủ yếu là sa mạc đá, núi lửa, hẻm núi và các dấu hiệu của
-              dòng nước cổ đại
-            </li>
-            <li>
-              Núi lửa lớn nhất: Olympus Mons – cao nhất trong Hệ Mặt Trời (~22
-              km)
-            </li>
-            <li>Hẻm núi lớn nhất: Valles Marineris – dài 4.000 km, sâu 7 km</li>
-            <li>
-              Băng cực: Có băng ở hai cực, chủ yếu là CO₂ đóng băng và nước đá
-            </li>
-            <li>
-              Khí quyển: Mỏng (~1% áp suất Trái Đất), chủ yếu gồm CO₂ (95%),
-              nitơ (3%), argon (1,6%)
-            </li>
-            <li>
-              Bão bụi: Lớn nhất trong Hệ Mặt Trời, có thể bao phủ toàn bộ hành
-              tinh trong nhiều tháng
-            </li>
-          </ul>
-          <h3>Cấu trúc bên trong:</h3>
-          <ul>
-            <li>Nhân: Rắn hoặc một phần lỏng, chứa sắt, lưu huỳnh và nickel</li>
-            <li>
-              Lớp phủ: Chủ yếu là silicat, ít hoạt động kiến tạo hơn Trái Đất
-            </li>
-            <li>
-              Vỏ ngoài: Mỏng (~50 km), có nhiều vết nứt và dấu hiệu của hoạt
-              động địa chất trong quá khứ
-            </li>
-          </ul>
-          <h3>Điểm đặc biệt:</h3>
-          <ul>
-            <li>
-              Có thể từng có nước: Nhiều dấu hiệu của sông, hồ và đại dương cổ
-              đại. Hiện nay, nước tồn tại chủ yếu ở dạng băng
-            </li>
-            <li>
-              Có hai mặt trăng: Phobos và Deimos, nhỏ và có hình dạng không đều
-            </li>
-            <li>
-              Điều kiện khắc nghiệt: Không khí loãng, nhiệt độ lạnh, bức xạ cao,
-              không thích hợp cho sự sống như trên Trái Đất
-            </li>
-            <li>
-              Tiềm năng sự sống: Các nghiên cứu đang tìm kiếm dấu hiệu của vi
-              sinh vật cổ đại
-            </li>
-          </ul>
-          <h3>Thám hiểm và nghiên cứu:</h3>
-          <ul>
-            <li>
-              Tàu Viking 1 & 2 (1976): Lần đầu tiên hạ cánh thành công và chụp
-              ảnh bề mặt
-            </li>
-            <li>
-              Tàu Curiosity (2012 - nay): Tìm kiếm bằng chứng về sự sống cổ đại
-              và môi trường có thể hỗ trợ sự sống
-            </li>
-            <li>
-              Tàu Perseverance (2021 - nay): Thu thập mẫu đất đá để phân tích
-              khả năng có sự sống
-            </li>
-            <li>
-              Các kế hoạch tương lai: NASA và SpaceX dự định đưa con người lên
-              Sao Hỏa trong thập kỷ tới
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal" id="jupiter-modal">
-      <div class="modal-content">
-        <h2 class="modal-title">Sao Mộc</h2>
-        <img src="image/SaoMoc.png" alt="Sao Mộc" class="modal-image" />
-        <div class="modal-body">
-          <p>
-            Sao Mộc (Jupiter) là hành tinh lớn nhất trong Hệ Mặt Trời và thuộc
-            nhóm hành tinh khí khổng lồ. Nó được đặt theo tên của thần Zeus
-            trong thần thoại La Mã vì kích thước và sức mạnh to lớn.
-          </p>
-          <h3>Đặc điểm chung:</h3>
-          <ul>
-            <li>Khoảng cách đến Mặt Trời: ~778,5 triệu km (5,2 AU)</li>
-            <li>Đường kính: ~139.820 km (gấp 11 lần Trái Đất)</li>
-            <li>Khối lượng: ~1,9 × 10²⁷ kg (gấp 318 lần Trái Đất)</li>
-            <li>Mật độ: 1,33 g/cm³</li>
-            <li>Thời gian quay quanh Mặt Trời: 11,86 năm Trái Đất</li>
-            <li>
-              Thời gian tự quay quanh trục: 9 giờ 55 phút (nhanh nhất trong Hệ
-              Mặt Trời)
-            </li>
-            <li>Độ nghiêng trục: 3,1° (gần như không tạo ra các mùa)</li>
-            <li>
-              Từ trường: Mạnh nhất trong Hệ Mặt Trời, bảo vệ các vệ tinh xung
-              quanh khỏi bức xạ Mặt Trời
-            </li>
-          </ul>
-          <h3>Cấu trúc và khí quyển:</h3>
-          <ul>
-            <li>Không có bề mặt rắn: Chủ yếu là khí hydro (H₂) và heli (He)</li>
-            <li>
-              Nhân có thể là đá hoặc kim loại: Bao quanh bởi lớp khí dày đặc và
-              hydro kim loại lỏng
-            </li>
-            <li>
-              Khí quyển: Chủ yếu gồm hydro (~89%) và heli (~10%), với các hợp
-              chất như methane (CH₄), amoniac (NH₃), nước (H₂O)
-            </li>
-            <li>
-              Bão khí quyển: Cực kỳ mạnh, nổi bật nhất là "Đốm Đỏ Lớn" – cơn bão
-              khổng lồ đã tồn tại hơn 300 năm
-            </li>
-          </ul>
-          <h3>Hệ thống vệ tinh và vòng:</h3>
-          <ul>
-            <li>Số vệ tinh: Ít nhất 95 mặt trăng đã được xác nhận</li>
-            <li>
-              Các vệ tinh quan trọng:
-              <ul>
-                <li>
-                  Ganymede: Lớn nhất trong Hệ Mặt Trời, lớn hơn cả sao Thủy
-                </li>
-                <li>
-                  Europa: Có lớp vỏ băng dày, khả năng có đại dương nước lỏng
-                  bên dưới
-                </li>
-                <li>Io: Núi lửa hoạt động mạnh nhất trong Hệ Mặt Trời</li>
-                <li>
-                  Callisto: Có nhiều hố va chạm, bề mặt cổ đại nhất trong Hệ Mặt
-                  Trời
-                </li>
-              </ul>
-            </li>
-            <li>
-              Hệ thống vòng: Gồm các vòng mỏng và mờ hơn nhiều so với Sao Thổ
-            </li>
-          </ul>
-          <h3>Điểm đặc biệt:</h3>
-          <ul>
-            <li>
-              Hành tinh khí khổng lồ: Không có bề mặt rắn như Trái Đất hay Sao
-              Hỏa
-            </li>
-            <li>
-              Từ trường mạnh nhất: Gấp 14 lần từ trường Trái Đất, tạo ra cực
-              quang rực rỡ
-            </li>
-            <li>Quay nhanh nhất: Dẫn đến hình dạng hơi dẹt ở hai cực</li>
-            <li>
-              Ảnh hưởng trọng lực lớn: Giúp bảo vệ Trái Đất bằng cách hút các
-              tiểu hành tinh và sao chổi
-            </li>
-          </ul>
-          <h3>Thám hiểm và nghiên cứu:</h3>
-          <ul>
-            <li>
-              Tàu Pioneer 10 & 11 (1973-1974): Lần đầu tiên chụp ảnh Sao Mộc từ
-              cự ly gần
-            </li>
-            <li>
-              Tàu Voyager 1 & 2 (1979): Khám phá các vệ tinh lớn và hệ thống khí
-              quyển
-            </li>
-            <li>
-              Tàu Galileo (1995-2003): Bay quanh Sao Mộc và gửi tàu thăm dò vào
-              khí quyển
-            </li>
-            <li>
-              Tàu Juno (2016 - nay): Nghiên cứu chi tiết về từ trường, khí quyển
-              và cấu trúc bên trong
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal" id="saturn-modal">
-      <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('saturn-modal')">
+          &times;
+        </button>
         <h2 class="modal-title">Sao Thổ</h2>
         <img src="image/SaoTho.png" alt="Sao Thổ" class="modal-image" />
         <div class="modal-body">
@@ -1173,6 +837,9 @@
 
     <div class="modal" id="uranus-modal">
       <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('uranus-modal')">
+          &times;
+        </button>
         <h2 class="modal-title">Sao Thiên Vương</h2>
         <img
           src="image/SaoThienVuong.png"
@@ -1308,6 +975,9 @@
 
     <div class="modal" id="neptune-modal">
       <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('neptune-modal')">
+          &times;
+        </button>
         <h2 class="modal-title">Sao Hải Vương</h2>
         <img
           src="image/SaoHaiVuong.png"
@@ -1439,6 +1109,9 @@
 
     <div class="modal" id="pluto-modal">
       <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('pluto-modal')">
+          &times;
+        </button>
         <h2 class="modal-title">Sao Diêm Vương</h2>
         <img
           src="image/SaoDiemVuong.png"
@@ -1567,6 +1240,9 @@
     <!-- Galaxy Modals -->
     <div class="modal" id="milkyway-modal">
       <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('milkyway-modal')">
+          &times;
+        </button>
         <h2 class="modal-title">Dải Ngân Hà</h2>
         <img src="image/DaiNganHa.png" alt="Dải Ngân Hà" class="modal-image" />
         <div class="modal-body">
@@ -1612,6 +1288,9 @@
 
     <div class="modal" id="spiral-modal">
       <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('spiral-modal')">
+          &times;
+        </button>
         <h2 class="modal-title">Thiên Hà Xoắn Ốc</h2>
         <img
           src="image/ThienHaXoanOc.jpg"
@@ -1655,6 +1334,9 @@
 
     <div class="modal" id="elliptical-modal">
       <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('elliptical-modal')">
+          &times;
+        </button>
         <h2 class="modal-title">Thiên Hà Elip</h2>
         <img
           src="image/ThienHaElip.png"
@@ -1692,6 +1374,9 @@
 
     <div class="modal" id="irregular-modal">
       <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('irregular-modal')">
+          &times;
+        </button>
         <h2 class="modal-title">Thiên Hà Dị Thường</h2>
         <img
           src="image/ThienHaDiThuong.png"
