@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Update button text and icon
         if (card.classList.contains("expanded")) {
           this.innerHTML =
-            '<span>Thu gọn</span><i class="fas fa-chevron-up"></i>';
+            '<span>Thu gọn</span><i class="fas fa-chevron-down"></i>';
           details.style.maxHeight = details.scrollHeight + "px";
         } else {
           this.innerHTML =
