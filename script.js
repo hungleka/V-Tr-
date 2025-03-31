@@ -176,3 +176,82 @@ navLinks.forEach((link) => {
     mainNav.classList.remove("active");
   });
 });
+
+// Initialize orbital cards collapse/expand functionality
+document.addEventListener("DOMContentLoaded", function () {
+  const orbitalCards = document.querySelectorAll(".orbital-card");
+
+  orbitalCards.forEach((card) => {
+    // Create toggle button if it doesn't exist
+    if (!card.querySelector(".orbital-toggle")) {
+      const toggleBtn = document.createElement("button");
+      toggleBtn.className = "orbital-toggle";
+      toggleBtn.innerHTML =
+        '<span>Xem thêm</span><i class="fas fa-chevron-down"></i>';
+
+      // Add toggle button after content
+      card.querySelector(".orbital-content").appendChild(toggleBtn);
+
+      // Add click event listener
+      toggleBtn.addEventListener("click", function () {
+        const details = card.querySelector(".orbital-details");
+
+        // Toggle the expanded class
+        card.classList.toggle("expanded");
+
+        // Update button text and icon
+        if (card.classList.contains("expanded")) {
+          this.innerHTML =
+            '<span>Thu gọn</span><i class="fas fa-chevron-up"></i>';
+          details.style.maxHeight = details.scrollHeight + "px";
+        } else {
+          this.innerHTML =
+            '<span>Xem thêm</span><i class="fas fa-chevron-down"></i>';
+          details.style.maxHeight = "0";
+        }
+      });
+    }
+  });
+});
+
+// Horizontal scroll functionality for orbital section
+document.addEventListener("DOMContentLoaded", function () {
+  const orbitalCards = document.querySelector(".orbital-cards");
+  const prevBtn = document.querySelector(".orbital-scroll-btn.prev");
+  const nextBtn = document.querySelector(".orbital-scroll-btn.next");
+
+  if (orbitalCards && prevBtn && nextBtn) {
+    const scrollAmount = 300; // Width of one card plus gap
+
+    prevBtn.addEventListener("click", () => {
+      orbitalCards.scrollBy({
+        left: -scrollAmount,
+        behavior: "smooth",
+      });
+    });
+
+    nextBtn.addEventListener("click", () => {
+      orbitalCards.scrollBy({
+        left: scrollAmount,
+        behavior: "smooth",
+      });
+    });
+
+    // Show/hide scroll buttons based on scroll position
+    orbitalCards.addEventListener("scroll", () => {
+      const isAtStart = orbitalCards.scrollLeft === 0;
+      const isAtEnd =
+        orbitalCards.scrollLeft + orbitalCards.clientWidth >=
+        orbitalCards.scrollWidth;
+
+      prevBtn.style.opacity = isAtStart ? "0.5" : "1";
+      prevBtn.style.pointerEvents = isAtStart ? "none" : "auto";
+
+      nextBtn.style.opacity = isAtEnd ? "0.5" : "1";
+      nextBtn.style.pointerEvents = isAtEnd ? "none" : "auto";
+    });
+
+    // Initial button state
+    orbitalCards.dispatchEvent(new Event("scroll"));
+  }
+});

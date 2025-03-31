@@ -15,6 +15,10 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   </head>
   <body>
@@ -210,39 +214,90 @@
           </div>
         </div>
 
-        <div class="section">
+        <div class="section orbital-section">
           <div class="shimmer-bg"></div>
           <h2 class="section-title">Quỹ Đạo và Chuyển Động</h2>
-          <div class="grid-container">
-            <div class="grid-item">
-              <h3>Quỹ đạo hành tinh:</h3>
-              <ul>
-                <li>Hình elip theo định luật Kepler</li>
-                <li>Mặt Trời nằm tại một tiêu điểm</li>
-                <li>Hành tinh quay nhanh hơn khi gần Mặt Trời</li>
-                <li>Chu kỳ quay phụ thuộc vào khoảng cách</li>
-              </ul>
-            </div>
 
-            <div class="grid-item">
-              <h3>Chuyển động tự quay:</h3>
-              <ul>
-                <li>Hầu hết hành tinh quay ngược chiều kim đồng hồ</li>
-                <li>Trục quay thường nghiêng so với mặt phẳng quỹ đạo</li>
-                <li>Độ nghiêng tạo ra các mùa trên hành tinh</li>
-                <li>Vận tốc quay ảnh hưởng đến hình dạng hành tinh</li>
-              </ul>
-            </div>
+          <div class="orbital-section">
+            <div class="orbital-cards">
+              <div class="orbital-card">
+                <div class="orbital-image">
+                  <img
+                    src="image/planetary-orbits.jpg"
+                    alt="Quỹ đạo hành tinh"
+                    class="orbit-img"
+                  />
+                </div>
+                <div class="orbital-content">
+                  <h3>Quỹ đạo hành tinh</h3>
+                  <div class="orbital-details">
+                    <div class="orbital-icon">
+                      <i class="fas fa-ellipsis-h"></i>
+                    </div>
+                    <ul>
+                      <li>Hình elip theo định luật Kepler</li>
+                      <li>Mặt Trời nằm tại một tiêu điểm</li>
+                      <li>Hành tinh quay nhanh hơn khi gần Mặt Trời</li>
+                      <li>Chu kỳ quay phụ thuộc vào khoảng cách</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
 
-            <div class="grid-item">
-              <h3>Hiệu ứng đặc biệt:</h3>
-              <ul>
-                <li>Hiện tượng nhật thực và nguyệt thực</li>
-                <li>Hiệu ứng Doppler trong quan sát thiên văn</li>
-                <li>Lực hấp dẫn tương tác giữa các hành tinh</li>
-                <li>Ảnh hưởng của Mặt Trăng đến thủy triều</li>
-              </ul>
+              <div class="orbital-card">
+                <div class="orbital-image">
+                  <img
+                    src="image/planet-rotation.jpg"
+                    alt="Chuyển động tự quay"
+                    class="orbit-img"
+                  />
+                </div>
+                <div class="orbital-content">
+                  <h3>Chuyển động tự quay</h3>
+                  <div class="orbital-details">
+                    <div class="orbital-icon">
+                      <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <ul>
+                      <li>Hầu hết hành tinh quay ngược chiều kim đồng hồ</li>
+                      <li>Trục quay thường nghiêng so với mặt phẳng quỹ đạo</li>
+                      <li>Độ nghiêng tạo ra các mùa trên hành tinh</li>
+                      <li>Vận tốc quay ảnh hưởng đến hình dạng hành tinh</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="orbital-card">
+                <div class="orbital-image">
+                  <img
+                    src="image/special-effects.jpg"
+                    alt="Hiệu ứng đặc biệt"
+                    class="orbit-img"
+                  />
+                </div>
+                <div class="orbital-content">
+                  <h3>Hiệu ứng đặc biệt</h3>
+                  <div class="orbital-details">
+                    <div class="orbital-icon">
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <ul>
+                      <li>Hiện tượng nhật thực và nguyệt thực</li>
+                      <li>Hiệu ứng Doppler trong quan sát thiên văn</li>
+                      <li>Lực hấp dẫn tương tác giữa các hành tinh</li>
+                      <li>Ảnh hưởng của Mặt Trăng đến thủy triều</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
+            <button class="orbital-scroll-btn prev">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="orbital-scroll-btn next">
+              <i class="fas fa-chevron-right"></i>
+            </button>
           </div>
         </div>
 
@@ -669,7 +724,6 @@
             <li><a href="#overview">Tổng Quan</a></li>
             <li><a href="#solar-system">Hệ Mặt Trời</a></li>
             <li><a href="#galaxy">Thiên Hà</a></li>
-            <li><a href="#universe-components">Thành Phần Vũ Trụ</a></li>
           </ul>
         </div>
 
@@ -678,13 +732,13 @@
           <ul class="contact-info">
             <li><i class="fas fa-envelope"></i> info@galaxix.com</li>
             <li><i class="fas fa-phone"></i> +84 123 456 789</li>
-            <li><i class="fas fa-map-marker-alt"></i> Hà Nội, Việt Nam</li>
+            <li><i class="fas fa-map-marker-alt"></i> tp HCM, Việt Nam</li>
           </ul>
         </div>
 
         <div class="footer-section">
           <h3>Bản Tin</h3>
-          <p>Đăng ký để nhận những cập nhật mới nhất về vũ trụ.</p>
+          <p>Đăng ký để nhận những thông tin mới nhất về vũ trụ.</p>
           <form class="newsletter-form">
             <input type="email" placeholder="Email của bạn" required />
             <button type="submit">Đăng Ký</button>
@@ -694,7 +748,7 @@
 
       <div class="footer-bottom">
         <div class="footer-bottom-content">
-          <p>&copy; 2024 GalaxiX. Tất cả quyền được bảo lưu.</p>
+          <p>&copy; 2025 GalaxiX. Tất cả quyền được bảo lưu.</p>
           <div class="footer-bottom-links">
             <a href="#">Chính Sách Bảo Mật</a>
             <a href="#">Điều Khoản Sử Dụng</a>

@@ -1088,18 +1088,22 @@ p {
     flex-direction: column;
   }
 
-  .newsletter-form button {
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
   }
 
-  .footer-bottom-content {
-    flex-direction: column;
-    gap: 1rem;
+  .contact-info li {
+    justify-content: center;
+    width: 100%;
     text-align: center;
   }
 
-  .footer-bottom-links {
-    justify-content: center;
+  .contact-info i {
+    margin-right: 0.5rem;
   }
 }
 
@@ -1120,7 +1124,11 @@ p {
 
   .newsletter-form input,
   .newsletter-form button {
-    padding: 0.7rem 1rem;
+    width: 100%;
+  }
+
+  .contact-info li {
+    font-size: 0.9rem;
   }
 }
 
@@ -1740,23 +1748,32 @@ p {
 }
 
 .view-more-btn {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background: rgba(0, 200, 255, 0.1);
-  color: #00c8ff;
-  border: 1px solid rgba(0, 200, 255, 0.3);
-  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
   cursor: pointer;
-  font-size: 0.9rem;
   transition: all 0.3s ease;
-  margin-top: 1rem;
-  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
 }
 
 .view-more-btn:hover {
-  background: rgba(0, 200, 255, 0.2);
-  border-color: rgba(0, 200, 255, 0.5);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
+}
+
+.view-more-btn i {
+  transition: transform 0.3s ease;
+}
+
+.orbital-card.expanded .view-more-btn i {
+  transform: rotate(180deg);
 }
 
 .component-details {
@@ -1786,7 +1803,6 @@ p {
 
 .component-details li::before {
   content: "•";
-  color: #00c8ff;
   position: absolute;
   left: 0.5rem;
   top: 0.5rem;
@@ -1936,24 +1952,25 @@ p {
 /* Swiper Navigation Styles */
 .solar-system-swiper .swiper-button-next,
 .solar-system-swiper .swiper-button-prev {
-  color: #00c8ff;
-  background: rgba(10, 10, 40, 0.8);
   width: 40px;
   height: 40px;
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
-  border: 1px solid rgba(0, 200, 255, 0.3);
+  backdrop-filter: blur(5px);
   transition: all 0.3s ease;
+  color: #fff;
 }
 
 .solar-system-swiper .swiper-button-next:after,
 .solar-system-swiper .swiper-button-prev:after {
-  font-size: 1.2rem;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .solar-system-swiper .swiper-button-next:hover,
 .solar-system-swiper .swiper-button-prev:hover {
-  background: rgba(0, 200, 255, 0.1);
-  border-color: rgba(0, 200, 255, 0.5);
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
 }
 
 .solar-system-swiper .swiper-pagination-bullet {
@@ -2010,6 +2027,340 @@ p {
 
   .solar-system-swiper .swiper-button-next,
   .solar-system-swiper .swiper-button-prev {
-    display: none;
+    width: 30px;
+    height: 30px;
+  }
+
+  .solar-system-swiper .swiper-button-next:after,
+  .solar-system-swiper .swiper-button-prev:after {
+    font-size: 16px;
+  }
+}
+
+.orbital-section {
+  position: relative;
+  padding: 4rem 2rem;
+  background: linear-gradient(
+    135deg,
+    rgba(13, 17, 23, 0.98) 0%,
+    rgba(25, 35, 55, 0.98) 100%
+  );
+  overflow: hidden;
+  z-index: 1;
+}
+
+.orbital-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+      circle at 20% 20%,
+      rgba(88, 86, 214, 0.05) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(255, 107, 107, 0.05) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+}
+
+.orbital-cards {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  position: relative;
+}
+
+.orbital-cards::-webkit-scrollbar {
+  display: none;
+}
+
+.orbital-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  min-width: 300px;
+  max-width: 400px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(0) scale(1);
+  opacity: 0.95;
+  will-change: transform, opacity;
+}
+
+.orbital-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+}
+
+.orbital-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  width: 100%;
+  transform-origin: center;
+  will-change: transform;
+}
+
+.orbital-image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(13, 17, 23, 0.9) 100%
+  );
+  z-index: 1;
+  opacity: 0.8;
+  transition: opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.orbital-card:hover .orbital-image::after {
+  opacity: 0.9;
+}
+
+.orbit-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: center;
+  will-change: transform;
+}
+
+.orbital-card:hover .orbit-img {
+  transform: scale(1.08);
+}
+
+.orbital-content {
+  padding: 2rem;
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(0);
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform;
+}
+
+.orbital-card:hover .orbital-content {
+  transform: translateY(-5px);
+}
+
+.orbital-content h3 {
+  font-size: 1.4rem;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+  font-weight: 600;
+  transition: color 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  width: 100%;
+  will-change: color;
+}
+
+.orbital-card:hover .orbital-content h3 {
+  color: #00c8ff;
+}
+
+.orbital-content h3::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, #5856d6, transparent);
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: left;
+  will-change: width, background;
+}
+
+.orbital-card:hover .orbital-content h3::after {
+  width: 100%;
+  background: linear-gradient(90deg, #00c8ff, transparent);
+}
+
+.orbital-details {
+  margin-top: 1.5rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  opacity: 0;
+  flex-grow: 1;
+  transform: translateY(10px);
+  will-change: transform, opacity, max-height;
+}
+
+.orbital-card.expanded .orbital-details {
+  max-height: 500px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.orbital-details li {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  position: relative;
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  transform: translateX(0);
+  opacity: 0.8;
+  will-change: transform, opacity, color;
+}
+
+.orbital-card:hover .orbital-details li {
+  color: #fff;
+  transform: translateX(8px);
+  opacity: 1;
+}
+
+.orbital-details li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #5856d6;
+  font-size: 1.2rem;
+  line-height: 1;
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform: scale(0.8);
+  will-change: transform, color;
+}
+
+.orbital-card:hover .orbital-details li::before {
+  color: #00c8ff;
+  transform: scale(1);
+}
+
+.orbital-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 0.7rem 1.2rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transform: translateY(0);
+  opacity: 0.8;
+  will-change: transform, opacity, background, border-color;
+}
+
+.orbital-toggle:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-3px);
+  opacity: 1;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.orbital-toggle i {
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform;
+}
+
+.orbital-card.expanded .orbital-toggle i {
+  transform: rotate(180deg);
+}
+
+.orbital-scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(4px);
+}
+
+.orbital-scroll-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.orbital-scroll-btn.prev {
+  left: 1rem;
+}
+
+.orbital-scroll-btn.next {
+  right: 1rem;
+}
+
+@media (max-width: 768px) {
+  .orbital-section {
+    padding: 3rem 1rem;
+  }
+
+  .orbital-card {
+    min-width: 280px;
+    max-width: 350px;
+  }
+
+  .orbital-image {
+    height: 180px;
+  }
+
+  .orbital-scroll-btn {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .orbital-section {
+    padding: 2rem 0.5rem;
+  }
+
+  .orbital-card {
+    min-width: 260px;
+    max-width: 300px;
+  }
+
+  .orbital-image {
+    height: 160px;
+  }
+
+  .orbital-scroll-btn {
+    width: 30px;
+    height: 30px;
   }
 }

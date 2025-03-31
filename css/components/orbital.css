@@ -1,0 +1,224 @@
+/* Orbital Section Styles */
+.orbital-section {
+  padding: 4rem 2rem;
+  background: linear-gradient(
+    135deg,
+    rgba(11, 11, 42, 0.95),
+    rgba(26, 26, 74, 0.95)
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.orbital-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.orbital-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.orbital-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 200, 255, 0.1);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform, opacity;
+  opacity: 0.95;
+}
+
+.orbital-card:hover {
+  transform: translateY(-8px);
+  opacity: 1;
+  box-shadow: 0 10px 30px rgba(0, 200, 255, 0.1);
+}
+
+.orbital-image {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.orbital-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform;
+}
+
+.orbital-card:hover .orbital-image img {
+  transform: scale(1.08);
+}
+
+.orbital-image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  opacity: 0.7;
+  transition: opacity 0.6s ease;
+}
+
+.orbital-card:hover .orbital-image::after {
+  opacity: 0.9;
+}
+
+.orbital-content {
+  padding: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.orbital-title {
+  font-size: 1.4rem;
+  color: #fff;
+  margin-bottom: 1rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.orbital-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, #00c8ff, transparent);
+  transition: width 0.6s ease;
+}
+
+.orbital-card:hover .orbital-title::after {
+  width: 100px;
+}
+
+.orbital-description {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.orbital-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: max-height;
+}
+
+.orbital-details.expanded {
+  max-height: 500px;
+}
+
+.orbital-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.orbital-list li {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 0.8rem;
+  padding-left: 1.5rem;
+  position: relative;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  will-change: transform, opacity;
+}
+
+.orbital-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #00c8ff;
+}
+
+.orbital-card:hover .orbital-list li {
+  transform: translateX(5px);
+  opacity: 1;
+}
+
+.orbital-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem;
+  background: rgba(0, 200, 255, 0.1);
+  border: 1px solid rgba(0, 200, 255, 0.3);
+  border-radius: 20px;
+  color: #00c8ff;
+  cursor: pointer;
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform, background-color;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.orbital-toggle:hover {
+  background: rgba(0, 200, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.orbital-toggle i {
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform;
+}
+
+.orbital-toggle.expanded i {
+  transform: rotate(180deg);
+}
+
+/* Responsive Orbital Section */
+@media (max-width: 992px) {
+  .orbital-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .orbital-section {
+    padding: 3rem 1rem;
+  }
+
+  .orbital-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .orbital-card {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .orbital-section {
+    padding: 2rem 1rem;
+  }
+
+  .orbital-image {
+    height: 180px;
+  }
+
+  .orbital-title {
+    font-size: 1.2rem;
+  }
+
+  .orbital-description {
+    font-size: 0.9rem;
+  }
+}
