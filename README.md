@@ -3,9 +3,6 @@
 ## 📝 Mô tả
 GalaxiX là một trang web tương tác được thiết kế để mang đến trải nghiệm khám phá vũ trụ tuyệt vời cho người dùng. Trang web cung cấp thông tin chi tiết về các hành tinh, thiên hà và các hiện tượng thiên văn học thú vị.
 
-## 👨‍💻 Người phát triển
-- Tên: Dương Phước Lê Hưng
-- MSSV: 221A010970
 ## 🖼️ Hình ảnh minh họa
 
 *Đầu trang*
