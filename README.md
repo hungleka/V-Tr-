@@ -1,14 +1,14 @@
-# Vũ Trụ - Trang Web Khám Phá Vũ Trụ
+# GalaxiX - Trang Web Khám Phá Vũ Trụ
 
 ## 📝 Mô tả
 
-Vũ Trụ là một trang web tương tác được thiết kế để mang đến trải nghiệm khám phá vũ trụ tuyệt vời cho người dùng. Trang web cung cấp thông tin chi tiết về các hành tinh, thiên hà và các hiện tượng thiên văn học thú vị.
+GalaxiX là một trang web tương tác được thiết kế để mang đến trải nghiệm khám phá vũ trụ tuyệt vời cho người dùng. Trang web cung cấp thông tin chi tiết về các hành tinh, thiên hà và các hiện tượng thiên văn học thú vị.
+
 
 ## 👨‍💻 Người phát triển
 
 - Tên: Dương Phước Lê Hưng
 - MSSV: 221A010970
-- GitHub: https://github.com/hungleka/V-Tr-
 
 ## ✨ Tính năng chính
 
@@ -23,13 +23,13 @@ Vũ Trụ là một trang web tương tác được thiết kế để mang đ�
 - HTML5
 - CSS3
 - JavaScript
-- Các thư viện hiệu ứng hiện đại
 - Figma (Thiết kế giao diện)
+- Các thư viện hiệu ứng hiện đại
 
 ## 📁 Cấu trúc dự án
 
 ```
-├── index.html          # Trang chủ
+├── index.html          # Trang web
 ├── styles.css          # File CSS chính
 ├── script.js           # JavaScript chính
 └── image/             # Thư mục chứa hình ảnh
@@ -37,4 +37,4 @@ Vũ Trụ là một trang web tương tác được thiết kế để mang đ�
 
 ---
 
-© 2025 Vũ Trụ. All rights reserved.
+© 2025 GalaxiX. All rights reserved.
