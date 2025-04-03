@@ -3,6 +3,7 @@
 ## 📝 Mô tả
 
 GalaxiX là một trang web tương tác được thiết kế để mang đến trải nghiệm khám phá vũ trụ tuyệt vời cho người dùng. Trang web cung cấp thông tin chi tiết về các hành tinh, thiên hà và các hiện tượng thiên văn học thú vị.
+![image](https://github.com/user-attachments/assets/77ffe45b-4c2a-4d09-acbe-1ee05c6bef94)
 
 
 ## 👨‍💻 Người phát triển
